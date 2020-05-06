@@ -1,2 +1,0 @@
-# CovidBharat
-Created with CodeSandbox
