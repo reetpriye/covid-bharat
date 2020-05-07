@@ -7,20 +7,22 @@
 
 .card {
   margin: 0 2% !important;
-  color: #d2d5db !important;
-  background-color: #0e202c !important;
+  /* background-color: #1d1d2f !important; */
 }
 
 .infected {
   border-bottom: 10px solid rgba(0, 0, 255, 0.5);
+  /* color: rgb(0, 0, 255) !important; */
 }
 
 .recovered {
   border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+  /* color: rgb(0, 255, 0) !important; */
 }
 
-.deaths {
+.deceased {
   border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+  /* color: rgb(255, 0, 0) !important; */
 }
 
 @media only screen and (max-width: 770px) {

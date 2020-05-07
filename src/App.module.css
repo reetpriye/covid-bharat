@@ -1,8 +1,23 @@
 body {
-  background-color: #192d39;
+  background-color: #rgb(245, 245, 245);
 }
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.logo {
+  width: 370px;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    margin: 0 10%;
+  }
+
+  .logo {
+    width: 100%;
+  }
 }

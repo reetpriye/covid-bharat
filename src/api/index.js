@@ -6,11 +6,17 @@ const url = "https://api.covid19india.org/data.json";
 export const fetchData = async () => {
   try {
     const {
-      data: { cases_time_series, statewise, tested }
+      data: { cases_time_series }
     } = await axios.get(url);
+    const totalConfirmed =
+      cases_time_series[cases_time_series.length - 1].totalconfirmed;
+    const totalRecovered =
+      cases_time_series[cases_time_series.length - 1].totalrecovered;
+    const totalDeceased =
+      cases_time_series[cases_time_series.length - 1].totaldeceased;
 
-    return { cases_time_series, statewise, tested };
+    return { totalConfirmed, totalRecovered, totalDeceased };
   } catch (error) {
-    return error;
+    console.log(error);
   }
 };

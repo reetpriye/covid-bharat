@@ -5,7 +5,10 @@ import cx from "classnames";
 
 import styles from "./Cards.module.css";
 
-function Cards() {
+function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
+  if (!totalConfirmed) {
+    return <h4>Loading...</h4>;
+  }
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -17,9 +20,16 @@ function Cards() {
           className={cx(styles.card, styles.infected)}
         >
           <CardContent>
-            <Typography gutterBottom>Infected</Typography>
+            <Typography gutterBottom variant="h4">
+              Infected
+            </Typography>
             <Typography variant="h5" component="h2">
-              <CountUp start={0} end={1000} duration={2.75} separator="," />
+              <CountUp
+                start={0}
+                end={parseInt(totalConfirmed)}
+                duration={2.75}
+                separator=","
+              />
             </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
@@ -35,9 +45,16 @@ function Cards() {
           className={cx(styles.card, styles.recovered)}
         >
           <CardContent>
-            <Typography gutterBottom>Recovered</Typography>
+            <Typography gutterBottom variant="h4">
+              Recovered
+            </Typography>
             <Typography variant="h5" component="h2">
-              <CountUp start={0} end={1000} duration={2.75} separator="," />
+              <CountUp
+                start={0}
+                end={parseInt(totalRecovered)}
+                duration={2.75}
+                separator=","
+              />
             </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
@@ -50,12 +67,19 @@ function Cards() {
           xs={12}
           md={3}
           component={Card}
-          className={cx(styles.card, styles.deaths)}
+          className={cx(styles.card, styles.deceased)}
         >
           <CardContent>
-            <Typography gutterBottom>Deaths</Typography>
+            <Typography gutterBottom variant="h4">
+              Deceased
+            </Typography>
             <Typography variant="h5" component="h2">
-              <CountUp start={0} end={1000} duration={2.75} separator="," />
+              <CountUp
+                start={0}
+                end={parseInt(totalDeceased)}
+                duration={2.75}
+                separator=","
+              />
             </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
