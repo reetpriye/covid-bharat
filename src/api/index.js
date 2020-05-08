@@ -3,6 +3,8 @@ import axios from "axios";
 
 const url = "https://api.covid19india.org/data.json";
 
+// Data Fetching for Cards
+
 export const fetchData = async () => {
   try {
     const {
@@ -21,11 +23,20 @@ export const fetchData = async () => {
   }
 };
 
+//Last 8 Days daily Data Fetching for Graph
+
 export const fetchDailyData = async () => {
   try {
     const {
       data: { cases_time_series }
     } = await axios.get(url);
-    return [cases_time_series];
+
+    const fetchedData = cases_time_series.map(data => ({
+      dailyConfirmed: data.dailyconfirmed,
+      dailyRecovered: data.dailyrecovered,
+      dailyDeceased: data.dailydeceased
+    }));
+    const lengthOfArray = cases_time_series.length;
+    return fetchedData.slice(lengthOfArray - 8, lengthOfArray);
   } catch (error) {}
 };
