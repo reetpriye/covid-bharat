@@ -7,22 +7,23 @@
 
 .card {
   margin: 0 2% !important;
-  /* background-color: #1d1d2f !important; */
+  background-color: #1d1d2f !important;
+  /* font-family: "Josefin Sans", sans-serif !important; */
 }
 
 .infected {
   border-bottom: 10px solid rgba(0, 0, 255, 0.5);
-  /* color: rgb(0, 0, 255) !important; */
+  color: rgb(250, 250, 250) !important;
 }
 
 .recovered {
   border-bottom: 10px solid rgba(0, 255, 0, 0.5);
-  /* color: rgb(0, 255, 0) !important; */
+  color: rgb(250, 250, 250) !important;
 }
 
 .deceased {
   border-bottom: 10px solid rgba(255, 0, 0, 0.5);
-  /* color: rgb(255, 0, 0) !important; */
+  color: rgb(250, 250, 250) !important;
 }
 
 @media only screen and (max-width: 770px) {

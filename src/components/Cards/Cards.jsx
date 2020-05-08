@@ -20,7 +20,7 @@ function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
           className={cx(styles.card, styles.infected)}
         >
           <CardContent>
-            <Typography gutterBottom variant="h4">
+            <Typography variant="h4" gutterBottom>
               Infected
             </Typography>
             <Typography variant="h5" component="h2">

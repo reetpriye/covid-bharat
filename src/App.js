@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { Cards, Graph, StatePicker } from "./components";
+import { Cards, Graph, StatePicker, ApexChart } from "./components";
 import { fetchData } from "./api";
 
 import styles from "./App.module.css";
@@ -25,6 +25,7 @@ class App extends React.Component {
         <Cards data={data} />
         <Graph />
         <StatePicker />
+        <ApexChart />
       </div>
     );
   }

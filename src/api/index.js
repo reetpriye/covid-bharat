@@ -20,3 +20,12 @@ export const fetchData = async () => {
     console.log(error);
   }
 };
+
+export const fetchDailyData = async () => {
+  try {
+    const {
+      data: { cases_time_series }
+    } = await axios.get(url);
+    return [cases_time_series];
+  } catch (error) {}
+};
