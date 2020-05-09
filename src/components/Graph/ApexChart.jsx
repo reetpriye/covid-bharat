@@ -1,6 +1,5 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { fetchDailyData } from "../../api";
 
 class ApexChart extends React.Component {
   constructor(props) {
@@ -10,15 +9,15 @@ class ApexChart extends React.Component {
       series: [
         {
           name: "Infected",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+          data: []
         },
         {
           name: "Recovered",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+          data: []
         },
         {
           name: "Deceased",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+          data: []
         }
       ],
       options: {
@@ -71,6 +70,25 @@ class ApexChart extends React.Component {
         }
       }
     };
+  }
+
+  async componentDidMount() {
+    this.setState({
+      series: [
+        {
+          name: "Infected",
+          data: [33, 55, 57, 56, 61, 58, 63, 60, 66]
+        },
+        {
+          name: "Recovered",
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        },
+        {
+          name: "Deceased",
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }
+      ]
+    });
   }
 
   render() {

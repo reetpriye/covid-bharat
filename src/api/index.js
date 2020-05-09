@@ -37,6 +37,7 @@ export const fetchDailyData = async () => {
       dailyDeceased: data.dailydeceased
     }));
     const lengthOfArray = cases_time_series.length;
-    return fetchedData.slice(lengthOfArray - 8, lengthOfArray);
+    const finalDailyData = fetchedData.slice(lengthOfArray - 8, lengthOfArray);
+    return finalDailyData;
   } catch (error) {}
 };
