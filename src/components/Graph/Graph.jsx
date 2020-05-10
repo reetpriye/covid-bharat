@@ -26,13 +26,24 @@ class Graph extends React.Component {
       ],
       options: {
         chart: {
-          type: "line",
+          type: "bar",
           height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded"
+          }
         },
         dataLabels: {
           enabled: false
         },
-
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
         xaxis: {
           categories: [
             "Feb",
@@ -52,18 +63,12 @@ class Graph extends React.Component {
           }
         },
         fill: {
-          type: "gradient",
-          gradient: {
-            shadeIntensity: 1,
-            opacityFrom: 0.7,
-            opacityTo: 0.9,
-            stops: [0, 90, 100]
-          }
+          opacity: 1
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return val + " cases";
+              return val + "cases";
             }
           }
         }
@@ -127,16 +132,19 @@ class Graph extends React.Component {
         <ReactApexChart
           options={this.state.options}
           series={this.state.infectedSeries}
+          type="bar"
           height={350}
         />
         <ReactApexChart
           options={this.state.options}
           series={this.state.recoveredSeries}
+          type="bar"
           height={350}
         />
         <ReactApexChart
           options={this.state.options}
           series={this.state.deceasedSeries}
+          type="bar"
           height={350}
         />
       </div>
