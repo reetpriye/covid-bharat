@@ -2,26 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Teko&display=swap");
 
 body {
-  background-color: #rgb(245, 245, 245);
+  background-color: rgb(245, 245, 245);
   font-family: "Josefin Sans", sans-serif !important;
 }
 
 #heading1 {
-  font-size: 6rem;
+  font-size: 4rem;
   font-family: "Teko", sans-serif;
   color: #ff5200;
 }
 
 #heading2 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: "Teko", sans-serif;
   color: #00263b;
 }
-
 .container {
   /* display: flex; */
-  /* align-items: center; */
-  /* flex-direction: column; */
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo {

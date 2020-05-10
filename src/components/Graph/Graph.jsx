@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { fetchDailyData } from "../../api";
 import ReactApexChart from "react-apexcharts";
 
@@ -6,15 +6,19 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      series: [
+      infectedSeries: [
         {
           name: "Infected",
           data: []
-        },
+        }
+      ],
+      recoveredSeries: [
         {
           name: "Recovered",
           data: []
-        },
+        }
+      ],
+      deceasedSeries: [
         {
           name: "Deceased",
           data: []
@@ -22,24 +26,13 @@ class Graph extends React.Component {
       ],
       options: {
         chart: {
-          type: "bar",
+          type: "line",
           height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "55%",
-            endingShape: "rounded"
-          }
         },
         dataLabels: {
           enabled: false
         },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["transparent"]
-        },
+
         xaxis: {
           categories: [
             "Feb",
@@ -59,12 +52,18 @@ class Graph extends React.Component {
           }
         },
         fill: {
-          opacity: 1
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 90, 100]
+          }
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return "$ " + val + " thousands";
+              return val + " cases";
             }
           }
         }
@@ -73,30 +72,50 @@ class Graph extends React.Component {
   }
 
   async componentDidMount() {
-    const dailyData = await fetchDailyData();
+    const fetchData = await fetchDailyData();
 
-    const dailyConfirmed = dailyData.map(el => ({
+    const dailyConfirmed = fetchData.map(el => ({
       dailyConfirmed: el.dailyConfirmed
     }));
     const dConfirmed = dailyConfirmed.map(
       ({ dailyConfirmed }) => dailyConfirmed
     );
-    const cConfirmed = dConfirmed.map(i => Number(i));
+    const dailyConfirmedFinal = dConfirmed.map(i => Number(i));
 
+    console.log(dailyConfirmedFinal);
+
+    const dailyRecovered = fetchData.map(el => ({
+      dailyRecovered: el.dailyRecovered
+    }));
+    const dRecovered = dailyRecovered.map(
+      ({ dailyRecovered }) => dailyRecovered
+    );
+    const dailyRecoveredFinal = dRecovered.map(i => Number(i));
+    console.log(dailyRecoveredFinal);
+    const dailyDeceased = fetchData.map(el => ({
+      dailyDeceased: el.dailyDeceased
+    }));
+    const dDeceased = dailyDeceased.map(({ dailyDeceased }) => dailyDeceased);
+    const dailyDeceasedFinal = dDeceased.map(i => Number(i));
+    console.log(dailyDeceasedFinal);
     this.setState({
-      series: [
+      infectedSeries: [
         {
           name: "Infected",
           // data: [33, 55, 57, 56, 61, 58, 63, 60, 66]
-          data: cConfirmed
-        },
+          data: dailyConfirmedFinal
+        }
+      ],
+      recoveredSeries: [
         {
           name: "Recovered",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-        },
+          data: dailyRecoveredFinal
+        }
+      ],
+      deceasedSeries: [
         {
           name: "Deceased",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+          data: dailyDeceasedFinal
         }
       ]
     });
@@ -107,8 +126,17 @@ class Graph extends React.Component {
       <div id="chart">
         <ReactApexChart
           options={this.state.options}
-          series={this.state.series}
-          type="bar"
+          series={this.state.infectedSeries}
+          height={350}
+        />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.recoveredSeries}
+          height={350}
+        />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.deceasedSeries}
           height={350}
         />
       </div>
@@ -117,9 +145,3 @@ class Graph extends React.Component {
 }
 
 export default Graph;
-
-// export const modifiedDailyData = dailyData.map(data => ({
-//   dailyConfirmedCase: data.dailyconfirmed,
-//   dailyRecoveredCase: data.dailyrecovered
-// }));
-// dailyData.length ? console.log(modifiedDailyData) : null;
