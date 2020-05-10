@@ -24,7 +24,7 @@ class Graph extends React.Component {
           data: []
         }
       ],
-      options: {
+      infectedOptions: {
         chart: {
           type: "bar",
           height: 350
@@ -45,17 +45,7 @@ class Graph extends React.Component {
           colors: ["transparent"]
         },
         xaxis: {
-          categories: [
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct"
-          ]
+          categories: []
         },
         yaxis: {
           title: {
@@ -63,12 +53,93 @@ class Graph extends React.Component {
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ["#008FFB"]
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return val + "cases";
+              return val + " cases";
+            }
+          }
+        }
+      },
+      recoveredOptions: {
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: {
+          categories: []
+        },
+        yaxis: {
+          title: {
+            text: "Number of Cases"
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ["#00e396"]
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return val + " cases";
+            }
+          }
+        }
+      },
+      deceasedOptions: {
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: {
+          categories: []
+        },
+        yaxis: {
+          title: {
+            text: "Number of Cases"
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ["#ff6363"]
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return val + " cases";
             }
           }
         }
@@ -87,8 +158,6 @@ class Graph extends React.Component {
     );
     const dailyConfirmedFinal = dConfirmed.map(i => Number(i));
 
-    console.log(dailyConfirmedFinal);
-
     const dailyRecovered = fetchData.map(el => ({
       dailyRecovered: el.dailyRecovered
     }));
@@ -96,14 +165,36 @@ class Graph extends React.Component {
       ({ dailyRecovered }) => dailyRecovered
     );
     const dailyRecoveredFinal = dRecovered.map(i => Number(i));
-    console.log(dailyRecoveredFinal);
+
     const dailyDeceased = fetchData.map(el => ({
       dailyDeceased: el.dailyDeceased
     }));
     const dDeceased = dailyDeceased.map(({ dailyDeceased }) => dailyDeceased);
     const dailyDeceasedFinal = dDeceased.map(i => Number(i));
-    console.log(dailyDeceasedFinal);
+
+    const date = fetchData.map(el => ({
+      date: el.date
+    }));
+
+    const dDate = date.map(({ date }) => date);
+    console.log(this.state.infectedOptions.xaxis.categories);
+    console.log(dDate);
     this.setState({
+      infectedOptions: {
+        xaxis: {
+          categories: dDate
+        }
+      },
+      recoveredOptions: {
+        xaxis: {
+          categories: dDate
+        }
+      },
+      deceasedOptions: {
+        xaxis: {
+          categories: dDate
+        }
+      },
       infectedSeries: [
         {
           name: "Infected",
@@ -130,19 +221,19 @@ class Graph extends React.Component {
     return (
       <div id="chart">
         <ReactApexChart
-          options={this.state.options}
+          options={this.state.infectedOptions}
           series={this.state.infectedSeries}
           type="bar"
           height={350}
         />
         <ReactApexChart
-          options={this.state.options}
+          options={this.state.recoveredOptions}
           series={this.state.recoveredSeries}
           type="bar"
           height={350}
         />
         <ReactApexChart
-          options={this.state.options}
+          options={this.state.deceasedOptions}
           series={this.state.deceasedSeries}
           type="bar"
           height={350}

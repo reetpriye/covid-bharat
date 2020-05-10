@@ -34,7 +34,8 @@ export const fetchDailyData = async () => {
     const fetchedData = cases_time_series.map(data => ({
       dailyConfirmed: data.dailyconfirmed,
       dailyRecovered: data.dailyrecovered,
-      dailyDeceased: data.dailydeceased
+      dailyDeceased: data.dailydeceased,
+      date: data.date
     }));
     const lengthOfArray = cases_time_series.length;
     const finalDailyData = fetchedData.slice(lengthOfArray - 25, lengthOfArray);
