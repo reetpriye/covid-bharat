@@ -52,6 +52,11 @@ class Graph extends React.Component {
         xaxis: {
           categories: []
         },
+        yaxis: {
+          title: {
+            text: "Combined Data"
+          }
+        },
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -83,7 +88,7 @@ class Graph extends React.Component {
         },
         yaxis: {
           title: {
-            text: "Number of Cases"
+            text: "Number of Cases [Infected]"
           }
         },
         fill: {
@@ -123,7 +128,7 @@ class Graph extends React.Component {
         },
         yaxis: {
           title: {
-            text: "Number of Cases"
+            text: "Number of Cases [Recovered]"
           }
         },
         fill: {
@@ -163,7 +168,7 @@ class Graph extends React.Component {
         },
         yaxis: {
           title: {
-            text: "Number of Cases"
+            text: "Number of Cases [Deceased]"
           }
         },
         fill: {
