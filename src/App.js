@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import { Cards, StatePicker, Graph } from "./components";
 import { fetchData } from "./api";
 

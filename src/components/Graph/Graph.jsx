@@ -6,6 +6,20 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      series: [
+        {
+          name: "Infected",
+          data: []
+        },
+        {
+          name: "Recovered",
+          data: []
+        },
+        {
+          name: "Deceased",
+          data: []
+        }
+      ],
       infectedSeries: [
         {
           name: "Infected",
@@ -24,6 +38,26 @@ class Graph extends React.Component {
           data: []
         }
       ],
+      options: {
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: {
+          categories: []
+        },
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm"
+          }
+        }
+      },
       infectedOptions: {
         chart: {
           type: "bar",
@@ -178,8 +212,27 @@ class Graph extends React.Component {
 
     const dDate = date.map(({ date }) => date);
     console.log(this.state.infectedOptions.xaxis.categories);
-    console.log(dDate);
+
     this.setState({
+      series: [
+        {
+          name: "Infected",
+          data: dailyConfirmedFinal
+        },
+        {
+          name: "Recovered",
+          data: dailyRecoveredFinal
+        },
+        {
+          name: "Deceased",
+          data: dailyDeceasedFinal
+        }
+      ],
+      options: {
+        xaxis: {
+          categories: dDate
+        }
+      },
       infectedOptions: {
         xaxis: {
           categories: dDate
@@ -236,6 +289,13 @@ class Graph extends React.Component {
           options={this.state.deceasedOptions}
           series={this.state.deceasedSeries}
           type="bar"
+          height={350}
+        />
+
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="area"
           height={350}
         />
       </div>
