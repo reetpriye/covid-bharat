@@ -38,7 +38,7 @@ export const fetchDailyData = async () => {
       date: data.date
     }));
     const lengthOfArray = cases_time_series.length;
-    const finalDailyData = fetchedData.slice(lengthOfArray - 25, lengthOfArray);
+    const finalDailyData = fetchedData.slice(lengthOfArray - 10, lengthOfArray);
     return finalDailyData;
   } catch (error) {}
 };
