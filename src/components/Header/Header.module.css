@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko&display=swap");
+
+.heading {
+  margin-left: 5rem;
+}
+
+#heading1 {
+  font-size: 4rem;
+  font-family: "Teko", sans-serif;
+  color: #ff5200;
+}
+
+#heading2 {
+  font-size: 4rem;
+  font-family: "Teko", sans-serif;
+  color: #00263b;
+}
+
+@media (max-width: 770px) {
+  .heading {
+    margin-left: 0px;
+  }
+}

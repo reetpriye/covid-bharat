@@ -7,7 +7,7 @@ import styles from "./Cards.module.css";
 
 function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
   if (!totalConfirmed) {
-    return <h4>Loading...</h4>;
+    return <h4>Fetching latest data...</h4>;
   }
   return (
     <div className={styles.container}>

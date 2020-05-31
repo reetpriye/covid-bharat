@@ -1,6 +1,6 @@
 import React from "react";
 
 function StatePicker() {
-  return <h1>StatePicker</h1>;
+  return <div />;
 }
 export default StatePicker;

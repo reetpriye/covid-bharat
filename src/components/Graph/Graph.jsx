@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchDailyData } from "../../api";
 import ReactApexChart from "react-apexcharts";
+import { Grid } from "@material-ui/core";
 
 class Graph extends React.Component {
   constructor(props) {
@@ -278,31 +279,40 @@ class Graph extends React.Component {
   render() {
     return (
       <div id="chart">
-        <ReactApexChart
-          options={this.state.infectedOptions}
-          series={this.state.infectedSeries}
-          type="bar"
-          height={350}
-        />
-        <ReactApexChart
-          options={this.state.recoveredOptions}
-          series={this.state.recoveredSeries}
-          type="bar"
-          height={350}
-        />
-        <ReactApexChart
-          options={this.state.deceasedOptions}
-          series={this.state.deceasedSeries}
-          type="bar"
-          height={350}
-        />
-
-        <ReactApexChart
-          options={this.state.options}
-          series={this.state.series}
-          type="area"
-          height={350}
-        />
+        <Grid container spacing={6} justify="center">
+          <Grid item md={3}>
+            <ReactApexChart
+              options={this.state.infectedOptions}
+              series={this.state.infectedSeries}
+              type="bar"
+              height={320}
+            />
+          </Grid>
+          <Grid item md={3}>
+            <ReactApexChart
+              options={this.state.recoveredOptions}
+              series={this.state.recoveredSeries}
+              type="bar"
+              height={320}
+            />
+          </Grid>
+          <Grid item md={3}>
+            <ReactApexChart
+              options={this.state.deceasedOptions}
+              series={this.state.deceasedSeries}
+              type="bar"
+              height={320}
+            />
+          </Grid>
+          <Grid item xs={12} md={10}>
+            <ReactApexChart
+              options={this.state.options}
+              series={this.state.series}
+              type="area"
+              height={320}
+            />
+          </Grid>
+        </Grid>
       </div>
     );
   }
