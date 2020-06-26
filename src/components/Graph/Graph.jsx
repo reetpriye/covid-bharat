@@ -3,6 +3,8 @@ import { fetchDailyData } from "../../api";
 import ReactApexChart from "react-apexcharts";
 import { Grid } from "@material-ui/core";
 
+import styles from "./Graph.module.css";
+
 class Graph extends React.Component {
   constructor(props) {
     super(props);
@@ -279,8 +281,13 @@ class Graph extends React.Component {
   render() {
     return (
       <div id="chart">
-        <Grid container spacing={6} justify="center">
-          <Grid item md={3}>
+        <Grid
+          className={styles.container}
+          container
+          spacing={3}
+          justify="center"
+        >
+          <Grid className={styles.containeritem} item md={3} xs={12}>
             <ReactApexChart
               options={this.state.infectedOptions}
               series={this.state.infectedSeries}
@@ -288,7 +295,7 @@ class Graph extends React.Component {
               height={320}
             />
           </Grid>
-          <Grid item md={3}>
+          <Grid className={styles.containeritem} item md={3} xs={12}>
             <ReactApexChart
               options={this.state.recoveredOptions}
               series={this.state.recoveredSeries}
@@ -296,7 +303,7 @@ class Graph extends React.Component {
               height={320}
             />
           </Grid>
-          <Grid item md={3}>
+          <Grid className={styles.containeritem} item md={3} xs={12}>
             <ReactApexChart
               options={this.state.deceasedOptions}
               series={this.state.deceasedSeries}
@@ -304,7 +311,7 @@ class Graph extends React.Component {
               height={320}
             />
           </Grid>
-          <Grid item xs={12} md={10}>
+          <Grid className={styles.containeritem} item xs={12} md={10}>
             <ReactApexChart
               options={this.state.options}
               series={this.state.series}

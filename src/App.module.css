@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-
 body {
   background-color: rgb(245, 245, 245);
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .container {

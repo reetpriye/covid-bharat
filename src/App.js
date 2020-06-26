@@ -20,7 +20,6 @@ class App extends React.Component {
     return (
       <div className={styles.container}>
         <Header />
-        {/* <img className={styles.logo} src={logo} alt="CoVid-19 Bharat" /> */}
         <Cards data={data} />
         <Graph />
         <StatePicker />

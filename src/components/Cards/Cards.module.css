@@ -26,7 +26,7 @@
   color: rgb(250, 250, 250) !important;
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 1395px) {
   .card {
     margin: 2% 0 !important;
   }
