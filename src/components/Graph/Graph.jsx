@@ -219,7 +219,7 @@ class Graph extends React.Component {
     }));
 
     const dDate = date.map(({ date }) => date);
-    console.log(this.state.infectedOptions.xaxis.categories);
+   
 
     this.setState({
       series: [
