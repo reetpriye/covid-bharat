@@ -16,8 +16,23 @@ export const fetchData = async () => {
       cases_time_series[cases_time_series.length - 1].totalrecovered;
     const totalDeceased =
       cases_time_series[cases_time_series.length - 1].totaldeceased;
-
-    return { totalConfirmed, totalRecovered, totalDeceased };
+    const dailyInfectedData =
+      cases_time_series[cases_time_series.length - 1].totalconfirmed -
+      cases_time_series[cases_time_series.length - 2].totalconfirmed;
+    const dailyRecoveredData =
+      cases_time_series[cases_time_series.length - 1].totalrecovered -
+      cases_time_series[cases_time_series.length - 2].totalrecovered;
+    const dailyDeceasedData =
+      cases_time_series[cases_time_series.length - 1].totaldeceased -
+      cases_time_series[cases_time_series.length - 2].totaldeceased;
+    return {
+      totalConfirmed,
+      totalRecovered,
+      totalDeceased,
+      dailyInfectedData,
+      dailyRecoveredData,
+      dailyDeceasedData
+    };
   } catch (error) {
     console.log(error);
   }

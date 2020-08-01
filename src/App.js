@@ -11,7 +11,6 @@ class App extends React.Component {
 
   async componentDidMount() {
     const data = await fetchData();
-
     this.setState({ data });
   }
 

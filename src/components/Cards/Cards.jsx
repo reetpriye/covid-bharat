@@ -5,9 +5,18 @@ import cx from "classnames";
 
 import styles from "./Cards.module.css";
 
-function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
+function Cards({
+  data: {
+    totalConfirmed,
+    totalRecovered,
+    totalDeceased,
+    dailyInfectedData,
+    dailyRecoveredData,
+    dailyDeceasedData
+  }
+}) {
   if (!totalConfirmed) {
-    return <h4>Fetching latest data...</h4>;
+    return <h4 align="center">Fetching latest data...</h4>;
   }
   return (
     <div className={styles.container}>
@@ -23,7 +32,7 @@ function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
             <Typography variant="h4" gutterBottom>
               Infected
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography variant="h5" component="h2" display="inline">
               <CountUp
                 start={0}
                 end={parseInt(totalConfirmed)}
@@ -31,9 +40,24 @@ function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
                 separator=","
               />
             </Typography>
+            <Typography
+              variant="caption"
+              component="h6"
+              align="right"
+              display="inline"
+            >
+              {"   "}
+              +
+              <CountUp
+                start={0}
+                end={parseInt(dailyInfectedData)}
+                duration={2.75}
+                separator=","
+              />
+            </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
-              Number of active cases of COVID-19.
+              Number of infected cases of COVID-19.
             </Typography>
           </CardContent>
         </Grid>
@@ -48,10 +72,26 @@ function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
             <Typography gutterBottom variant="h4">
               Recovered
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography variant="h5" component="h2" display="inline">
               <CountUp
                 start={0}
                 end={parseInt(totalRecovered)}
+                duration={2.75}
+                separator=","
+              />
+            </Typography>
+
+            <Typography
+              variant="caption"
+              component="h6"
+              align="right"
+              display="inline"
+            >
+              {"   "}
+              +
+              <CountUp
+                start={0}
+                end={parseInt(dailyRecoveredData)}
                 duration={2.75}
                 separator=","
               />
@@ -73,13 +113,29 @@ function Cards({ data: { totalConfirmed, totalRecovered, totalDeceased } }) {
             <Typography gutterBottom variant="h4">
               Deceased
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography variant="h5" component="h2" display="inline">
               <CountUp
                 start={0}
                 end={parseInt(totalDeceased)}
                 duration={2.75}
                 separator=","
               />
+
+              <Typography
+                variant="caption"
+                component="h6"
+                align="right"
+                display="inline"
+              >
+                {"   "}
+                +
+                <CountUp
+                  start={0}
+                  end={parseInt(dailyDeceasedData)}
+                  duration={2.75}
+                  separator=","
+                />
+              </Typography>
             </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
