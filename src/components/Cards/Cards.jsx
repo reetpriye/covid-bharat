@@ -12,7 +12,8 @@ function Cards({
     totalDeceased,
     dailyInfectedData,
     dailyRecoveredData,
-    dailyDeceasedData
+    dailyDeceasedData,
+    lastUpdate
   }
 }) {
   if (!totalConfirmed) {
@@ -54,6 +55,10 @@ function Cards({
                 duration={2.75}
                 separator=","
               />
+            </Typography>
+            <Typography variant="caption" component="p">
+              {" "}
+              Last Updated on {lastUpdate}{" "}
             </Typography>
             <Typography color="textSecondary" />
             <Typography variant="body2" component="p">
@@ -97,6 +102,10 @@ function Cards({
               />
             </Typography>
             <Typography color="textSecondary" />
+            <Typography variant="caption" component="p">
+              {" "}
+              Last Updated on {lastUpdate}{" "}
+            </Typography>
             <Typography variant="body2" component="p">
               Number of recoveries from COVID-19.
             </Typography>
@@ -138,6 +147,10 @@ function Cards({
               </Typography>
             </Typography>
             <Typography color="textSecondary" />
+            <Typography variant="caption" component="p">
+              {" "}
+              Last Updated on {lastUpdate}{" "}
+            </Typography>
             <Typography variant="body2" component="p">
               Number of deaths caused by COVID-19.
             </Typography>

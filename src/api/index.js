@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const url = "https://api.covid19india.org/data.json";
@@ -25,13 +24,15 @@ export const fetchData = async () => {
     const dailyDeceasedData =
       cases_time_series[cases_time_series.length - 1].totaldeceased -
       cases_time_series[cases_time_series.length - 2].totaldeceased;
+    const lastUpdate = cases_time_series[cases_time_series.length - 1].date;
     return {
       totalConfirmed,
       totalRecovered,
       totalDeceased,
       dailyInfectedData,
       dailyRecoveredData,
-      dailyDeceasedData
+      dailyDeceasedData,
+      lastUpdate
     };
   } catch (error) {
     console.log(error);
