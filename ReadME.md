@@ -1,6 +1,8 @@
 CovidBharat | Covid-19 stats dashboard designed specific for India.
 Based on React Library.
 
+![ScreenShot](public/assets/Screenshot.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Clone down this repository. You will need node and npm installed globally on your machine.
