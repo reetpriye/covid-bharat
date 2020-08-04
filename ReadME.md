@@ -1,3 +1,5 @@
+## CovidBharat
+
 CovidBharat | Covid-19 stats dashboard designed specific for India.
 Based on React Library.
 
