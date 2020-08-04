@@ -191,35 +191,25 @@ class Graph extends React.Component {
 
   async componentDidMount() {
     const fetchData = await fetchDailyData();
-
-    const dailyConfirmed = fetchData.map(el => ({
-      dailyConfirmed: el.dailyConfirmed
-    }));
-    const dConfirmed = dailyConfirmed.map(
-      ({ dailyConfirmed }) => dailyConfirmed
-    );
-    const dailyConfirmedFinal = dConfirmed.map(i => Number(i));
-
-    const dailyRecovered = fetchData.map(el => ({
-      dailyRecovered: el.dailyRecovered
-    }));
-    const dRecovered = dailyRecovered.map(
-      ({ dailyRecovered }) => dailyRecovered
-    );
-    const dailyRecoveredFinal = dRecovered.map(i => Number(i));
-
-    const dailyDeceased = fetchData.map(el => ({
-      dailyDeceased: el.dailyDeceased
-    }));
-    const dDeceased = dailyDeceased.map(({ dailyDeceased }) => dailyDeceased);
-    const dailyDeceasedFinal = dDeceased.map(i => Number(i));
-
-    const date = fetchData.map(el => ({
+    const dailyData = fetchData.map(el => ({
+      dailyConfirmed: el.dailyConfirmed,
+      dailyRecovered: el.dailyRecovered,
+      dailyDeceased: el.dailyDeceased,
       date: el.date
     }));
+    const dailyConfirmedFinal = dailyData
+      .map(({ dailyConfirmed }) => dailyConfirmed)
+      .map(i => Number(i));
 
-    const dDate = date.map(({ date }) => date);
-   
+    const dailyRecoveredFinal = dailyData
+      .map(({ dailyRecovered }) => dailyRecovered)
+      .map(i => Number(i));
+
+    const dailyDeceasedFinal = dailyData
+      .map(({ dailyDeceased }) => dailyDeceased)
+      .map(i => Number(i));
+
+    const dDate = dailyData.map(({ date }) => date);
 
     this.setState({
       series: [
