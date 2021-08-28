@@ -1,9 +1,9 @@
-import React from "react";
-import { Card, CardContent, Typography, Grid } from "@material-ui/core";
-import CountUp from "react-countup";
-import cx from "classnames";
+import React from 'react';
+import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import CountUp from 'react-countup';
+import cx from 'classnames';
 
-import styles from "./Cards.module.css";
+import styles from './Cards.module.css';
 
 function Cards({
   data: {
@@ -13,15 +13,15 @@ function Cards({
     dailyInfectedData,
     dailyRecoveredData,
     dailyDeceasedData,
-    lastUpdate
-  }
+    lastUpdate,
+  },
 }) {
   if (!totalConfirmed) {
-    return <h4 align="center">Fetching latest data...</h4>;
+    return <h4 align='center'>Fetching latest data...</h4>;
   }
   return (
     <div className={styles.container}>
-      <Grid container spacing={3} justify="center">
+      <Grid container spacing={3} justify='center'>
         <Grid
           item
           xs={12}
@@ -30,38 +30,38 @@ function Cards({
           className={cx(styles.card, styles.infected)}
         >
           <CardContent>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant='h4' gutterBottom>
               Infected
             </Typography>
-            <Typography variant="h5" component="h2" display="inline">
+            <Typography variant='h5' component='h2' display='inline'>
               <CountUp
                 start={0}
                 end={parseInt(totalConfirmed)}
                 duration={2.75}
-                separator=","
+                separator=','
               />
             </Typography>
             <Typography
-              variant="caption"
-              component="h6"
-              align="right"
-              display="inline"
+              variant='caption'
+              component='h6'
+              align='right'
+              display='inline'
             >
-              {"   "}
+              {'   '}
               +
               <CountUp
                 start={0}
                 end={parseInt(dailyInfectedData)}
                 duration={2.75}
-                separator=","
+                separator=','
               />
             </Typography>
-            <Typography variant="caption" component="p">
-              {" "}
-              Last Updated on {lastUpdate}{" "}
+            <Typography variant='caption' component='p'>
+              {' '}
+              Last Updated on {lastUpdate}{' '}
             </Typography>
-            <Typography color="textSecondary" />
-            <Typography variant="body2" component="p">
+            <Typography color='textSecondary' />
+            <Typography variant='body2' component='p'>
               Number of infected cases of COVID-19.
             </Typography>
           </CardContent>
@@ -74,39 +74,39 @@ function Cards({
           className={cx(styles.card, styles.recovered)}
         >
           <CardContent>
-            <Typography gutterBottom variant="h4">
+            <Typography gutterBottom variant='h4'>
               Recovered
             </Typography>
-            <Typography variant="h5" component="h2" display="inline">
+            <Typography variant='h5' component='h2' display='inline'>
               <CountUp
                 start={0}
                 end={parseInt(totalRecovered)}
                 duration={2.75}
-                separator=","
+                separator=','
               />
             </Typography>
 
             <Typography
-              variant="caption"
-              component="h6"
-              align="right"
-              display="inline"
+              variant='caption'
+              component='h6'
+              align='right'
+              display='inline'
             >
-              {"   "}
+              {'   '}
               +
               <CountUp
                 start={0}
                 end={parseInt(dailyRecoveredData)}
                 duration={2.75}
-                separator=","
+                separator=','
               />
             </Typography>
-            <Typography color="textSecondary" />
-            <Typography variant="caption" component="p">
-              {" "}
-              Last Updated on {lastUpdate}{" "}
+            <Typography color='textSecondary' />
+            <Typography variant='caption' component='p'>
+              {' '}
+              Last Updated on {lastUpdate}{' '}
             </Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant='body2' component='p'>
               Number of recoveries from COVID-19.
             </Typography>
           </CardContent>
@@ -119,39 +119,39 @@ function Cards({
           className={cx(styles.card, styles.deceased)}
         >
           <CardContent>
-            <Typography gutterBottom variant="h4">
+            <Typography gutterBottom variant='h4'>
               Deceased
             </Typography>
-            <Typography variant="h5" component="h2" display="inline">
+            <Typography variant='h5' component='h2' display='inline'>
               <CountUp
                 start={0}
                 end={parseInt(totalDeceased)}
                 duration={2.75}
-                separator=","
+                separator=','
               />
 
               <Typography
-                variant="caption"
-                component="h6"
-                align="right"
-                display="inline"
+                variant='caption'
+                component='h6'
+                align='right'
+                display='inline'
               >
-                {"   "}
+                {'   '}
                 +
                 <CountUp
                   start={0}
                   end={parseInt(dailyDeceasedData)}
                   duration={2.75}
-                  separator=","
+                  separator=','
                 />
               </Typography>
             </Typography>
-            <Typography color="textSecondary" />
-            <Typography variant="caption" component="p">
-              {" "}
-              Last Updated on {lastUpdate}{" "}
+            <Typography color='textSecondary' />
+            <Typography variant='caption' component='p'>
+              {' '}
+              Last Updated on {lastUpdate}{' '}
             </Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant='body2' component='p'>
               Number of deaths caused by COVID-19.
             </Typography>
           </CardContent>
