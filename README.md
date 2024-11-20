@@ -3,7 +3,7 @@
 Covid-19 stats dashboard designed specific for India.
 Based on React Library.
 
-![ScreenShot](.public/Screenshot.png)
+![ScreenShot](./public/Screenshot.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
